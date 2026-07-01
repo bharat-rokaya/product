@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(134, 211, 255);
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+.main {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+#productCard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.card {
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+    word-wrap: break-word;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card h2 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    margin-bottom: 10px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background: rgb(44, 138, 253);
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all .2s ease;
+}
+
+.btn:hover {
+    background: rgb(13, 121, 254);
+    transform: scale(1.02);
+}
+
+/* Large tablets */
+@media (max-width: 1024px) {
+    #productCard {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    #productCard {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+    #productCard {
+        grid-template-columns: 1fr;
+    }
+
+    body {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
