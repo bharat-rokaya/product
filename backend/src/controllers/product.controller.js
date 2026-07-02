@@ -22,12 +22,24 @@ const getProductById = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
-  try {
-    const newProduct = await productService.createProduct(req.body);
-    res.status(201).json(newProduct);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
+    try {
+
+        const productData = {
+            name: req.body.name,
+            price: req.body.price,
+            description: req.body.description || "",
+            image: req.file.filename
+        };
+
+        const newProduct = await productService.createProduct(productData);
+
+        res.status(201).json(newProduct);
+
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        });
+    }
 };
 
 const updateProduct = async (req, res) => {
