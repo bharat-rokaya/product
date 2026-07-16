@@ -5,95 +5,303 @@
 }
 
 body {
-    background-color: rgb(134, 211, 255);
+    background: #bee7ff;
     min-height: 100vh;
     overflow-x: hidden;
     padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body.modal-open {
+    overflow: hidden;
 }
 
 .main {
     width: 100%;
     max-width: 1400px;
-    margin: 0 auto;
+    margin: auto;
 }
 
 h1 {
-    color: white;
-    font-size: 30px;
-    font-weight: 500;
+    color: rgba(0, 0, 255, 0.507);
+    font-size: 32px;
+    font-weight: 600;
     margin-bottom: 20px;
 }
 
+/* ================= PRODUCTS ================= */
+
 #productCard {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
     width: 100%;
+    align-items: stretch;
 }
 
 .card {
     background: white;
-    padding: 16px;
-    border-radius: 8px;
-    overflow: hidden;
-    word-wrap: break-word;
-    transition: transform 0.2s ease;
+    border-radius: 16px;
+    padding: 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.12);
+    transition: transform .25s ease, box-shadow .25s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    gap: 8px;
 }
 
 .card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(0,0,0,.18);
 }
 
 .card h2 {
-    margin-bottom: 10px;
+    margin: 2px 0 0;
+    font-size: 20px;
+    color: #1f2937;
 }
 
 .card p {
-    margin-bottom: 10px;
+    margin: 0;
+    line-height: 1.4;
+}
+
+
+.card-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.8em;
+}
+
+.product-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #f3f4f6;
 }
 
 .btn {
     width: 100%;
-    padding: 10px;
+    padding: 10px 12px;
     border: none;
-    border-radius: 4px;
-    background: rgb(44, 138, 253);
+    border-radius: 10px;
+    background: rgb(44,138,253);
     color: white;
+    font-size: 15px;
+    font-weight: 600;
     cursor: pointer;
-    font-size: 16px;
-    transition: all .2s ease;
+    transition: .2s;
+    margin-top: auto;
 }
 
 .btn:hover {
-    background: rgb(13, 121, 254);
-    transform: scale(1.02);
+    background: rgb(13,121,254);
 }
 
-/* Large tablets */
-@media (max-width: 1024px) {
-    #productCard {
-        grid-template-columns: repeat(3, 1fr);
+/* ================= FLOATING BUTTON ================= */
+
+#addProduct {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+
+    width: 60px;
+    height: 60px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgb(44,138,253);
+    color: white;
+
+    font-size: 34px;
+    cursor: pointer;
+
+    box-shadow: 0 10px 20px rgba(0,0,0,.25);
+
+    transition: .2s;
+}
+
+#addProduct:hover {
+    transform: scale(1.08);
+    background: rgb(13,121,254);
+}
+
+.success-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #2ecc71, #27ae60);
+    color: white;
+    padding: 14px 20px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.2);
+    display: none;
+    z-index: 1100;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.3px;
+}
+
+/* ================= FORM MODAL ================= */
+
+#productForm {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,.45);
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999;
+}
+
+/* Form Box */
+
+#productForm .form-box {
+    width: min(90%, 500px);
+
+    background: white;
+
+    border-radius: 14px;
+
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+
+    animation: popup .25s ease;
+}
+
+/* Inputs */
+
+#productForm input,
+#productForm textarea {
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+#productForm textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+#productForm input:focus,
+#productForm textarea:focus {
+    border-color: rgb(44,138,253);
+}
+
+.form-error {
+    color: #dc2626;
+    font-size: 14px;
+    margin-top: -8px;
+    display: none;
+}
+
+/* Button */
+
+#addProductBtn {
+    border: none;
+
+    padding: 14px;
+
+    background: rgb(44,138,253);
+
+    color: white;
+
+    font-size: 17px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+#addProductBtn:hover {
+    background: rgb(13,121,254);
+}
+
+/* Animation */
+
+@keyframes popup {
+    from {
+        transform: scale(.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
     }
 }
 
-/* Tablets */
-@media (max-width: 768px) {
-    #productCard {
-        grid-template-columns: repeat(2, 1fr);
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:1024px){
+
+    #productCard{
+        grid-template-columns:repeat(3, minmax(0, 1fr));
     }
+
 }
 
-/* Phones */
-@media (max-width: 480px) {
-    #productCard {
-        grid-template-columns: 1fr;
+@media (max-width:768px){
+
+    #productCard{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        gap: 16px;
     }
 
-    body {
-        padding: 15px;
+    #productForm .form-box{
+        width:92%;
+        padding:25px;
     }
 
-    h1 {
-        font-size: 24px;
+}
+
+@media (max-width:480px){
+
+    body{
+        padding:15px;
     }
+
+    h1{
+        font-size:26px;
+    }
+
+    #productCard{
+        grid-template-columns:1fr;
+        gap: 14px;
+    }
+
+    #productForm .form-box{
+        width:95%;
+        padding:20px;
+    }
+
+    #addProduct{
+        width:55px;
+        height:55px;
+    }
+
 }

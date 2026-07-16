@@ -10,6 +10,44 @@
     <div class="main">
         <h1>Our Products</h1>
         <div id="productCard"></div>
+        <div id="successPopup" class="success-popup">Product added successfully!</div>
+        <button id="addProduct" type="button">+</button>
+
+        <form id="productForm">
+    <div class="form-box">
+
+        <input
+            type="text"
+            id="productName"
+            placeholder="Product Name"
+            required>
+
+        <input
+            type="number"
+            id="productPrice"
+            placeholder="Product Price"
+            min="0"
+            step="0.01"
+            required>
+        <p id="priceError" class="form-error"></p>
+
+        <textarea
+            id="productDescription"
+            placeholder="Product Description"></textarea>
+
+        <!-- NEW -->
+        <input
+            type="file"
+            id="productImage"
+            accept="image/*"
+            required>
+
+        <button id="addProductBtn" type="button">
+            Add Product
+        </button>
+
+    </div>
+</form>
     </div>
 
     <script src="script.js"></script>
