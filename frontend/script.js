@@ -1,6 +1,5 @@
 // =====================
 // DOM Elements
-// =====================
 const productCard = document.getElementById("productCard");
 const productForm = document.getElementById("productForm");
 
