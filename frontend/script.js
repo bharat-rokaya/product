@@ -58,9 +58,6 @@ productForm.addEventListener("click", (e) => {
 });
 
 
-// =====================
-// Validation
-// =====================
 function clearPriceError() {
     priceError.textContent = "";
     priceError.style.display = "none";
