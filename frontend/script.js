@@ -113,9 +113,6 @@ async function getProducts() {
 }
 
 
-// =====================
-// Form Submission
-// =====================
 async function submitProductForm(e) {
     e.preventDefault();
 
@@ -150,9 +147,6 @@ submitButton.addEventListener("click", submitProductForm);
 productForm.addEventListener("submit", submitProductForm);
 
 
-// =====================
-// Product Card
-// =====================
 function createProductCard(product) {
     const card = document.createElement("div");
     card.className = "card";
@@ -183,9 +177,6 @@ function createProductCard(product) {
 }
 
 
-// =====================
-// Render Products
-// =====================
 async function fetchProducts() {
     try {
         const products = await getProducts();
