@@ -201,8 +201,4 @@ async function fetchProducts() {
     }
 }
 
-
-// =====================
-// Init
-// =====================
 fetchProducts();
