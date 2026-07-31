@@ -86,9 +86,6 @@ function validatePrice() {
 inputs.price.addEventListener("input", clearPriceError);
 
 
-// =====================
-// API
-// =====================
 async function createProduct(formData) {
     const response = await fetch(API_URL, {
         method: "POST",
