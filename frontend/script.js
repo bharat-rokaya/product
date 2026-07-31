@@ -22,9 +22,6 @@ const API_URL = "http://localhost:3000/api/product";
 const IMAGE_URL = "http://localhost:3000/uploads";
 
 
-// =====================
-// Popup
-// =====================
 function showSuccessPopup() {
     successPopup.style.display = "block";
 
@@ -36,9 +33,6 @@ function showSuccessPopup() {
 }
 
 
-// =====================
-// Modal
-// =====================
 function openModal() {
     productForm.style.display = "flex";
     document.body.classList.add("modal-open");
